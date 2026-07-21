@@ -13,8 +13,13 @@ public class Ejercicio {
     @Column(nullable = false, length = 100)
     private String nombreEjercicio;
 
+
     @Column(nullable = false)
     private Integer repeticiones;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "categoria_id", nullable = false)
+    private CategoriaMuscular categoriaMuscular;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rutina_id", nullable = false)
@@ -50,5 +55,13 @@ public class Ejercicio {
 
     public void setRutina(Rutina rutina) {
         this.rutina = rutina;
+    }
+
+    public CategoriaMuscular getCategoriaMuscular() {
+        return categoriaMuscular;
+    }
+
+    public void setCategoriaMuscular(CategoriaMuscular categoriaMuscular) {
+        this.categoriaMuscular = categoriaMuscular;
     }
 }
